@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Q&A</title>
+</head>
+<body>
+    <h1>Financial Q&A</h1>
+    <form method="post">
+        <label for="question">Enter Your Question From Documents:</label>
+        <input type="text" id="question" name="question" required>
+        <button type="submit">Submit Question</button>
+        <button type="submit" name="embed_documents" value="embed_documents">Documents Embedding</button>
+    </form>
+    <h2>Response:</h2>
+    <p>{{ response }}</p>
+
+    {% if chunks %}
+    <h3>Document Similarity Search</h3>
+    {% for chunk in chunks %}
+    <div>
+        <p>{{ chunk.page_content }}</p>
+        <hr>
+    </div>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>
